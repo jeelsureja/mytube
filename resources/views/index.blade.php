@@ -1,59 +1,94 @@
-@extends('parent')
 
-@section('main')
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>My Play Video </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="My Play Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- bootstrap -->
+<link href="{{URL::asset('../css/bootstrap.min.css')}}" rel='stylesheet' type='text/css' media="all" />
+<!-- //bootstrap -->
+<link href="{{URL::asset('../css/dashboard.css')}}" rel="stylesheet">
+<!-- Custom Theme files -->
 
-<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<div align="right">
-	<a href="{{route('crud.create')}}" class="btn btn-success btn-sm">Add</a>
-</div>
-<br />
-<!-- @if ($message = Session::get('success'))
-<div class="alert alert-success">
-	<p>{{ $message }}</p>
-</div>
-@endif -->
+<link href="{{URL::asset('../css/style.css')}}" rel='stylesheet' type='text/css' media="all" />
+<script src="{{URL::asset('../js/jquery-1.11.1.min.js')}}"></script>
+<script src="https://use.fontawesome.com/fe459689b4.js"></script>
 
+<!--start-smoth-scrolling-->
+<!-- fonts -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+<!-- //fonts -->
+<style>
+.footer {
 
+left: 0;
+bottom: 0;
+width: 100%;
+color: white;
+text-align: center;
+}
 
-	@foreach($data as $row)
+</style>
+</head>
+  <body>
 
-<form action="{{ route('crud.destroy', $row->id) }}" method="post">
-
-<!-- <div class="container">
-<div class="col-md-4">
-<div class="card" style="width:200px ">
-<img src="{{ URL::to('/') }}/images/{{ $row->image }}" class="img-thumbnail" width="200" />
-<div class="card-body">
-<h4 class="card-title">{{ $row->first_name }}</h4>
-<p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-
-</div>
-</div>
-</div>
-</div> -->
-<div class="col-md-4 col-sm-6">
-<div class="item">
-<div class="thumb">
-<a href="img/second_big_item.jpg" data-lightbox="image-1"><div class="hover-effect">
-<div class="hover-content">
-
-</div>
-</div></a>
-<div class="image">
-<img src="{{ URL::to('/') }}/images/{{ $row->image }}" class="img-thumbnail" width="200" />
-<h2>{{ $row->first_name }}</h2>
-<a href="{{ route('crud.show', $row->id) }}"  class = "btn btn-default"><span class="glyphicon glyphicon-play"></span> Play Video</a>
-</div>
-</div>
-</div>
-</div>
-<!-- <a href="{{ route('crud.edit', $row->id) }}" class="btn btn-warning">Edit</a> -->
-<!-- @csrf -->
-<!-- @method('DELETE') -->
-<!-- <button type="submit" class="btn btn-danger">Delete</button> -->
-
-</form>
-
-@endforeach
-
-@endsection
+    @include('assets.navbar')
+	
+        <div class="col-sm-3 col-md-2 sidebar">
+			@include('assets.sidebar')
+        </div>
+       
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<div class="main-grids">
+			
+				<div class="recommended">
+			
+					<div class="recommended-grids">
+						<div class="recommended-info">
+						<h1>Home</h1>
+						</div>
+						@foreach($data as $row)
+						<div class="col-md-3 resent-grid recommended-grid">
+						
+							<div class="resent-grid-img recommended-grid-img">
+								<a href="{{ route('crud.show', $row->id) }}"><img src="{{ URL::to('/') }}/images/{{ $row->image }}" alt="" width="200px" height="200px"/></a>
+								
+							</div>
+							<div class="resent-grid-info recommended-grid-info video-info-grid">
+								<h5>{{ $row->video_name }}</h5>
+								<ul>
+									
+								</ul>
+							</div>
+						</div>
+					
+						@endforeach
+						<div class="clearfix"> </div>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+			
+		</div>
+		<div class="clearfix"> </div>
+	<div class="drop-menu">
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu4">
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
+		  <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
+		</ul>
+	</div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+  </body>
+</htm>

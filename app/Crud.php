@@ -8,7 +8,8 @@ class Crud extends Model
 {
  
     protected $table = 'sample_data';
+    protected $primaryKey = 'id';
     protected $fillable = [
-    	'first_name', 'last_name', 'image','video'
+    	'category_id','u_id','video_name', 'video_des', 'image','video'
     ];
 }

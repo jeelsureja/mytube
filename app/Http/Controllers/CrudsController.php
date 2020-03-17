@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 use App\Crud;
+use App\category;
+use App\User;
+use App\likes;
+use App\comments;
+use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CrudsController extends Controller
 {
@@ -13,8 +19,20 @@ class CrudsController extends Controller
      */
     public function index()
     {
+       
         $data = Crud::all();
-        return view('index', compact('data'));
+        $categorys = category::all();
+     
+        
+        
+
+    //     $categorys = DB::table('category')
+    //    ->join('state', 'state.state_id', '=', 'city.state_id')
+    //    ->join('country', 'country.country_id', '=', 'state.country_id')
+    //    ->select('country.country_name', 'state.state_name', 'city.city_name')
+    //    ->get();
+
+        return view('index', compact('data','categorys'));
     }
 
     /**
@@ -24,7 +42,8 @@ class CrudsController extends Controller
      */
     public function create()
     {
-        return view('create');
+        $categorys = category::all();
+        return view('create',compact('categorys'));
     }
 
     /**
@@ -36,23 +55,27 @@ class CrudsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'first_name'    =>  'required',
-            'last_name'     =>  'required',
+            'video_name'    =>  'required',
+            'video_des'     =>  'required',
             'image'         =>  'required|image|max:2048'
         ]);
-
+        
         $image = $request->file('image');
         $video =$request->file('video');
+
 
         $new_name = rand() . '.' . $image->getClientOriginalExtension();
         $new_name1= rand() . '.' . $video->getClientOriginalExtension();
         $image->move(public_path('images'), $new_name);
         $video->move(public_path('videos'), $new_name1);
         $form_data = array(
-            'first_name'       =>   $request->first_name,
-            'last_name'        =>   $request->last_name,
+            'video_name'       =>   $request->video_name,
+            'video_des'        =>   $request->video_des,
+            'u_id'             =>   $request->u_id,
+            'category_id'      =>   $request->category_id,
             'image'            =>   $new_name,
             'video'            =>   $new_name1
+           
         );
 
         Crud::create($form_data);
@@ -68,8 +91,22 @@ class CrudsController extends Controller
      */
     public function show($id)
     {
+        $query = DB::table('likes')
+        ->select(array( DB::raw('COUNT(lid) as likes')))
+        ->where('id', '=', $id )
+        ->get();
+        $result1 = User::join('sample_data', 'users.id','=','sample_data.u_id')
+        ->where('sample_data.id', '=', $id)
+        ->select('users.name')
+        ->first();
+        $result = User::join('comments', 'users.id', '=', 'comments.u_id')
+        ->where('vid', '=', $id) 
+        ->select('users.name', 'users.email','users.avatar','comments.comment','comments.updated_at')
+        ->get();
+        $data2 = Crud::all();
+        $categorys = category::all();
         $data = Crud::findOrFail($id);
-        return view('view', compact('data'));
+        return view('view',array('user'=>Auth::user()), compact('data','categorys','result1','query','result','favourites','data2'));
     }
 
     /**
@@ -98,8 +135,8 @@ class CrudsController extends Controller
         if($image != '')
         {
             $request->validate([
-                'first_name'    =>  'required',
-                'last_name'     =>  'required',
+                'video_name'    =>  'required',
+                'video_des'     =>  'required',
                 'image'         =>  'image|max:2048'
             ]);
             $image_name = rand() . '.' . $image->getClientOriginalExtension();
@@ -108,14 +145,14 @@ class CrudsController extends Controller
         else
         {
             $request->validate([
-                'first_name'    =>  'required',
-                'last_name'     =>  'required'
+                'video_name'    =>  'required',
+                'video_des'     =>  'required'
             ]);
         }
 
         $form_data = array(
-            'first_name'    =>  $request->first_name,
-            'last_name'     =>  $request->last_name,
+            'video_name'    =>  $request->video_name,
+            'video_des'     =>  $request->video_des,
             'image'         =>  $image_name
         );
 

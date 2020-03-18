@@ -12,38 +12,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="My Play Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- bootstrap -->
-<link href="<?php echo e(URL::asset('css/bootstrap.min.css')); ?>" rel='stylesheet' type='text/css' media="all" />
-<!-- //bootstrap -->
-<link href="<?php echo e(URL::asset('css/dashboard.css')); ?>" rel="stylesheet">
-<!-- Custom Theme files -->
-<link href="<?php echo e(URL::asset('css/style.css')); ?>" rel='stylesheet' type='text/css' media="all" />
-<script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
-<script src="https://use.fontawesome.com/fe459689b4.js"></script>
-<!--start-smoth-scrolling-->
-<!-- fonts -->
-<link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-<!-- //fonts -->
-<!--player links-->
-<link rel="stylesheet" href="https://cdn.plyr.io/3.5.10/plyr.css" />
-<script src="https://cdn.plyr.io/3.5.10/plyr.js"></script>
-<style type="text/css">
-/* This is purely for the demo */
-.container {
-max-width: 1040px;
-margin: 0 auto;
-}
-.plyr {
-border-radius: 4px;
-margin-bottom: 15px;
-}
-.footer {
-color: white;
-text-align: center;
-}
-</style>
+
+	<?php echo $__env->make('assets.head', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 </head>
   <body>
@@ -62,45 +32,7 @@ text-align: center;
          
 					</div>
 						<div class="video-grid">
-            <script type="text/javascript">
-            document.addEventListener('DOMContentLoaded', () => {
-            // This is the bare minimum JavaScript. You can opt to pass no arguments to setup.
-            const player = new Plyr('#player');
-
-            // Expose
-            window.player = player;
-
-            // Bind event listener
-            function on(selector, type, callback) {
-            document.querySelector(selector).addEventListener(type, callback, false);
-            }
-
-            // Play
-            on('.js-play', 'click', () => {
-            player.play();
-            });
-
-            // Pause
-            on('.js-pause', 'click', () => {
-            player.pause();
-            });
-
-            // Stop
-            on('.js-stop', 'click', () => {
-            player.stop();
-            });
-
-            // Rewind
-            on('.js-rewind', 'click', () => {
-            player.rewind();
-            });
-
-           	// Forward
-			on('.js-forward', 'click', () => {
-			player.forward();
-			});
-			});
-            </script>
+           
                 <video controls crossorigin playsinline poster="<?php echo e(URL::to('/')); ?>/images/<?php echo e($data->image); ?>" height="200px" width="200px" id="player">
                 <!-- Video files -->
                 <source src="<?php echo e(URL::to('/')); ?>/videos/<?php echo e($data->video); ?>" type="video/mp4" size="576">
@@ -168,7 +100,7 @@ text-align: center;
 									<input type="text" value="<?php echo e(Auth::user()->name); ?>" disabled><br><br>		           					   
 									<input type="text" value="<?php echo e(Auth::user()->email); ?>" disabled> 
 									<textarea placeholder="Message" name="comment" required=" "></textarea>
-									<input type="submit" value="submit">
+									<input  type="submit" value="submit"  class=" btn btn-info">
 									<div class="clearfix"> </div>
 								</form>
 							</div>
@@ -233,10 +165,7 @@ text-align: center;
 		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
 		</ul>
 	</div>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+	
   </body>
+  <?php echo $__env->make('assets.script', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </html><?php /**PATH /var/www/html/laravel/mytube/resources/views/view.blade.php ENDPATH**/ ?>

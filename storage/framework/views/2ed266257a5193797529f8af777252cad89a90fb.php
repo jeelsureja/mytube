@@ -1,5 +1,8 @@
-<?php $__env->startSection('content'); ?>
-<div class="container">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+<div class="container"><br>
+        <center><img src="images/logo.png" height="100px" width="200px"></center><br>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -73,20 +76,25 @@ endif; ?>
 
                                 </button>
 
-                                <?php if(Route::has('password.request')): ?>
-                                    <a class="btn btn-link" href="<?php echo e(route('password.request')); ?>">
+                                
+
+                               
+                            </div>
+                        </div>
+                      
+                        <a href="<?php echo e(route('register')); ?>" style="padding-left:240px;">
+                                    <?php echo e(__('Register')); ?>
+
+                                </a><br>
+                        <?php if(Route::has('password.request')): ?>
+                                    <a class="btn btn-link" href="<?php echo e(route('password.request')); ?>" style="padding-left:240px;">
                                         <?php echo e(__('Forgot Your Password?')); ?>
 
                                     </a>
                                 <?php endif; ?>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/laravel/mytube/resources/views/auth/login.blade.php ENDPATH**/ ?>
+</div><?php /**PATH /var/www/html/laravel/mytube/resources/views/auth/login.blade.php ENDPATH**/ ?>

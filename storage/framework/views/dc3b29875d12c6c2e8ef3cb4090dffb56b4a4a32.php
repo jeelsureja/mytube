@@ -12,38 +12,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="My Play Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- bootstrap -->
-
-<link href="<?php echo e(URL::asset('css/bootstrap.min.css')); ?>" rel='stylesheet' type='text/css' media="all" />
-
-<!-- //bootstrap -->
-<link href="<?php echo e(URL::asset('css/dashboard.css')); ?>" rel="stylesheet">
-<!-- Custom Theme files -->
-<link href="<?php echo e(URL::asset('css/style.css')); ?>" rel='stylesheet' type='text/css' media="all" />
-<script src="<?php echo e(URL::asset('js/jquery-1.11.1.min.js')); ?>"></script>
-<script src="https://use.fontawesome.com/fe459689b4.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!--start-smoth-scrolling-->
-<!-- fonts -->
-<link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-<!-- //fonts -->
-<!--player links-->
-<link rel="stylesheet" href="https://cdn.plyr.io/3.5.10/plyr.css" />
-<script src="https://cdn.plyr.io/3.5.10/plyr.js"></script>
-<style type="text/css">
-/* This is purely for the demo */
-.container {
-max-width: 1040px;
-margin: 0 auto;
-}
-.plyr {
-border-radius: 4px;
-margin-bottom: 15px;
-}
-</style>
+	
+	<?php echo $__env->make('assets.head', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 </head>
   <body>
@@ -62,45 +32,7 @@ margin-bottom: 15px;
          
 					</div>
 						<div class="video-grid">
-            <script type="text/javascript">
-            document.addEventListener('DOMContentLoaded', () => {
-            // This is the bare minimum JavaScript. You can opt to pass no arguments to setup.
-            const player = new Plyr('#player');
-
-            // Expose
-            window.player = player;
-
-            // Bind event listener
-            function on(selector, type, callback) {
-            document.querySelector(selector).addEventListener(type, callback, false);
-            }
-
-            // Play
-            on('.js-play', 'click', () => {
-            player.play();
-            });
-
-            // Pause
-            on('.js-pause', 'click', () => {
-            player.pause();
-            });
-
-            // Stop
-            on('.js-stop', 'click', () => {
-            player.stop();
-            });
-
-            // Rewind
-            on('.js-rewind', 'click', () => {
-            player.rewind();
-            });
-
-           	// Forward
-			on('.js-forward', 'click', () => {
-			player.forward();
-			});
-			});
-            </script>
+            
                 <video controls crossorigin playsinline poster="<?php echo e(URL::to('/')); ?>/images/<?php echo e($data->image); ?>" height="200px" width="200px" id="player">
                 <!-- Video files -->
                 <source src="<?php echo e(URL::to('/')); ?>/videos/<?php echo e($data->video); ?>" type="video/mp4" size="576">
@@ -180,139 +112,24 @@ margin-bottom: 15px;
 				</div>
 				<div class="col-md-4 single-right">
 					<h3>Up Next</h3>
+					<?php $__currentLoopData = $data3; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 					<div class="single-grid-right">
+					
 						<div class="single-right-grids">
+						
 							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/r1.jpg" alt="" /></a>
+								<a href="<?php echo e(route('videoplay.show', $row->id)); ?>"><img src="<?php echo e(URL::to('/')); ?>/images/<?php echo e($row->image); ?>" alt="" /></a>
 							</div>
 							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
+								<a href="<?php echo e(route('videoplay.show', $row->id)); ?>" class="title"> <?php echo e($row->video_name); ?></a>
+								<!-- <p class="author"><a href="#" class="author"><?php echo e($result1->name); ?></a></p> -->
+								<!-- <p class="views">2,114,200 views</p> -->
 							</div>
 							<div class="clearfix"> </div>
 						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/r2.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views </p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/r3.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/r4.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/r5.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/r6.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author">By <a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/r1.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/r2.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/r3.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/r4.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/r5.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/r6.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
+					</div>
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+					<div class="col-md-4 single-right-grid-right">
 					</div>
 				</div>
 				<div class="clearfix"> </div>
@@ -327,15 +144,6 @@ margin-bottom: 15px;
 		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
 		</ul>
 	</div>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-	<script>
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover();   
-});
-</script>
+		<?php echo $__env->make('assets.script', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
   </body>
 </html><?php /**PATH /var/www/html/laravel/mytube/resources/views/withoutlogin/videoplay.blade.php ENDPATH**/ ?>

@@ -60,6 +60,9 @@
                       <th>
                         Message
                       </th>
+                      <th>
+                       Time
+                      </th>
                     </thead>
                     <tbody>
                     <?php $i = 1; ?>
@@ -79,6 +82,10 @@
                         </td>
                         <td>
                             <?php echo e($row->message); ?>
+
+                        </td>
+                        <td>
+                            <?php echo e($row->created_at); ?>
 
                         </td>
                       </tr>

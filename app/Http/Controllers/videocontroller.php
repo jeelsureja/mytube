@@ -89,6 +89,8 @@ class videocontroller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Crud::findOrFail($id);
+        $data->delete();
+        return redirect('video');
     }
 }

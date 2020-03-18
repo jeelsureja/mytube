@@ -97,6 +97,8 @@ class favouritecontroller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $favourites = favourite::findOrFail($id);
+        $favourites->delete();
+        return redirect('favourites');
     }
 }

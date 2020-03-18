@@ -75,7 +75,7 @@
 
                         </td>
                         <td>
-                        <form action="<?php echo e(URL::route('admindashboard.destroy', $user->id)); ?>" method="POST">
+                        <form action="<?php echo e(URL::route('usermanage.destroy', $user->id)); ?>" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
 								        <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>"> 
                         

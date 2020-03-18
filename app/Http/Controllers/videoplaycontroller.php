@@ -68,9 +68,10 @@ class videoplaycontroller extends Controller
         ->where('vid', '=', $id) 
         ->select('users.name', 'users.email','users.avatar','comments.comment','comments.updated_at')
         ->get();
+        $data3 = Crud::all();
         $categorys = category::all();
         $data = Crud::findOrFail($id);
-        return view('withoutlogin.videoplay', compact('data','categorys','result1','query','result'));
+        return view('withoutlogin.videoplay', compact('data','categorys','result1','query','result','data3'));
     }
 
     /**

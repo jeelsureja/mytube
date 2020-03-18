@@ -1,7 +1,6 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<div class="container"><br>
+<center><img src="images/logo.png" height="100px" width="200px"></center><br>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -67,11 +66,13 @@
                                     {{ __('Register') }}
                                 </button>
                             </div>
-                        </div>
+                        </div><br>
+                        <p style="padding-left:240px;">I have an account.<a href="{{route('login')}}">
+                                      Login.
+                                </a></p><br>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection

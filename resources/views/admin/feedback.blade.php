@@ -60,6 +60,9 @@
                       <th>
                         Message
                       </th>
+                      <th>
+                       Time
+                      </th>
                     </thead>
                     <tbody>
                     <?php $i = 1; ?>
@@ -76,6 +79,9 @@
                         </td>
                         <td>
                             {{$row->message}}
+                        </td>
+                        <td>
+                            {{$row->created_at}}
                         </td>
                       </tr>
                       @endforeach

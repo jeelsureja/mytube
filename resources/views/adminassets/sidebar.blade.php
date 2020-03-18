@@ -6,9 +6,9 @@
           </div>
         </a>
         <a href="{{route('admindashboard.index')}}" class="simple-text logo-normal">
-          MyTube
+          MyPlayVideo
           <div class="logo-image-big">
-            <img src="assets/img/logo-big.png">
+           
           </div>
         </a>
       </div>

@@ -82,6 +82,6 @@ class usermanagecontroller extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('admin.index');
+        return redirect('/usermanage');
     }
 }

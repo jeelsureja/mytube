@@ -1,7 +1,8 @@
-@extends('layouts.app')
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-@section('content')
-<div class="container">
+
+<div class="container"><br>
+        <center><img src="images/logo.png" height="100px" width="200px"></center><br>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -57,17 +58,23 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                
+
+                               
+                            </div>
+                        </div>
+                      
+                        <a href="{{route('register')}}" style="padding-left:240px;">
+                                    {{ __('Register') }}
+                                </a><br>
+                        @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}" style="padding-left:240px;">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection

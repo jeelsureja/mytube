@@ -12,32 +12,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="My Play Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- bootstrap -->
-
-<link href="/css/bootstrap.min.css" rel='stylesheet' type='text/css' media="all" />
-<!-- //bootstrap -->
-<link href="/css/dashboard.css" rel="stylesheet">
-<!-- Custom Theme files -->
-<link href="/css/style.css" rel='stylesheet' type='text/css' media="all" />
-<script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
-<script src="https://use.fontawesome.com/fe459689b4.js"></script>
-<!--start-smoth-scrolling-->
-<!-- fonts -->
-<link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-<!-- //fonts -->
-<style>
-.footer {
-position: fixed;
-left: 0;
-bottom: 0;
-width: 100%;
-color: white;
-text-align: center;
-}
-
-</style>
+  <?php echo $__env->make('assets.head', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </head>
   <body>
 
@@ -137,10 +112,6 @@ text-align: center;
 		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
 		</ul>
 	</div>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <?php echo $__env->make('assets.script', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
   </body>
 </html><?php /**PATH /var/www/html/laravel/mytube/resources/views/create.blade.php ENDPATH**/ ?>

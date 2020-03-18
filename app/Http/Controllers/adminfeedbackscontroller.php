@@ -19,7 +19,7 @@ class adminfeedbackscontroller extends Controller
     {
         $data4 = User::join('feedback', 'users.id', '=', 'feedback.u_id')
 
-        ->select('users.name', 'users.email','feedback.message','feedback.updated_at')
+        ->select('users.name', 'users.email','feedback.message','feedback.created_at')
         ->get();
         return view('admin.feedback',compact('data4'));
     }

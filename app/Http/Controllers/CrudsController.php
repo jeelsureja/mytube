@@ -103,7 +103,7 @@ class CrudsController extends Controller
         ->where('vid', '=', $id) 
         ->select('users.name', 'users.email','users.avatar','comments.comment','comments.updated_at')
         ->get();
-        $data2 = Crud::all();
+        $data2 = Crud::all();   
         $categorys = category::all();
         $data = Crud::findOrFail($id);
         return view('view',array('user'=>Auth::user()), compact('data','categorys','result1','query','result','favourites','data2'));

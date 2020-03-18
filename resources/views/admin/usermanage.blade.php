@@ -72,7 +72,7 @@
                           {{$user->email}}
                         </td>
                         <td>
-                        <form action="{{ URL::route('admindashboard.destroy', $user->id) }}" method="POST">
+                        <form action="{{ URL::route('usermanage.destroy', $user->id) }}" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
 								        <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
                         

@@ -1,7 +1,6 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<div class="container"><br>
+<center><img src="../images/logo.png" height="100px" width="200px"></center><br>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -44,4 +43,4 @@
         </div>
     </div>
 </div>
-@endsection
+

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\category;
+use Illuminate\Http\Request;
 
 class playlistscontroller extends Controller
 {
@@ -15,7 +15,8 @@ class playlistscontroller extends Controller
     public function index()
     {
         $categorys = category::all();
-        return view('userprofile',compact('categorys'));
+
+        return view('userprofile', compact('categorys'));
     }
 
     /**
@@ -26,13 +27,13 @@ class playlistscontroller extends Controller
     public function create()
     {
         $categorys = category::all();
-        return view('addplaylists',compact('categorys'));
+
+        return view('addplaylists', compact('categorys'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -65,7 +66,6 @@ class playlistscontroller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

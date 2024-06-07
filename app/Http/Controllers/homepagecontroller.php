@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Crud;
 use App\category;
+use App\Crud;
 use App\User;
-use App\likes;
-use App\comments;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class homepagecontroller extends Controller
@@ -21,7 +19,8 @@ class homepagecontroller extends Controller
     {
         $data = Crud::all();
         $categorys = category::all();
-        return view('withoutlogin.home',compact('data','categorys'));
+
+        return view('withoutlogin.home', compact('data', 'categorys'));
     }
 
     /**
@@ -37,7 +36,6 @@ class homepagecontroller extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -54,20 +52,21 @@ class homepagecontroller extends Controller
     public function show($id)
     {
         $query = DB::table('likes')
-        ->select(array( DB::raw('COUNT(lid) as likes')))
-        ->where('id', '=', $id )
-        ->get();
-        $result1 = User::join('sample_data', 'users.id','=','sample_data.u_id')
-        ->where('sample_data.id', '=', $id)
-        ->select('users.name')
-        ->first();
+            ->select([DB::raw('COUNT(lid) as likes')])
+            ->where('id', '=', $id)
+            ->get();
+        $result1 = User::join('sample_data', 'users.id', '=', 'sample_data.u_id')
+            ->where('sample_data.id', '=', $id)
+            ->select('users.name')
+            ->first();
         $result = User::join('comments', 'users.id', '=', 'comments.u_id')
-        ->where('vid', '=', $id) 
-        ->select('users.name', 'users.email','comments.comment','comments.updated_at')
-        ->get();
+            ->where('vid', '=', $id)
+            ->select('users.name', 'users.email', 'comments.comment', 'comments.updated_at')
+            ->get();
         $categorys = category::all();
         $data = Crud::findOrFail($id);
-        return view('withoutlogin.categorypage', compact('data','categorys','result1','query','result'));
+
+        return view('withoutlogin.categorypage', compact('data', 'categorys', 'result1', 'query', 'result'));
     }
 
     /**
@@ -84,7 +83,6 @@ class homepagecontroller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

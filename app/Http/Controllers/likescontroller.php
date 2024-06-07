@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\likes;
 
+use App\likes;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class likescontroller extends Controller
 {
@@ -33,16 +32,16 @@ class likescontroller extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $form_data = array(
+        $form_data = [
             'id' => $request->id,
-            'u_id' => $request->u_id
-        );
+            'u_id' => $request->u_id,
+        ];
         likes::firstOrCreate($form_data);
+
         return back()->withInput();
     }
 
@@ -71,7 +70,6 @@ class likescontroller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -88,9 +86,9 @@ class likescontroller extends Controller
      */
     public function destroy($id)
     {
-        $data=DB::table('likes')
-        ->where(['u_id'=>Auth::user()->id, 'id'=>$id])
-        ->delete();
+        $data = DB::table('likes')
+            ->where(['u_id' => Auth::user()->id, 'id' => $id])
+            ->delete();
 
         return back()->withInput();
     }

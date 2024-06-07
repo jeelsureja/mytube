@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Http\Request;
 
 class usermanagecontroller extends Controller
 {
@@ -15,7 +15,8 @@ class usermanagecontroller extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin.usermanage',compact('users'));
+
+        return view('admin.usermanage', compact('users'));
     }
 
     /**
@@ -31,7 +32,6 @@ class usermanagecontroller extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -64,7 +64,6 @@ class usermanagecontroller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -82,6 +81,7 @@ class usermanagecontroller extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
+
         return redirect('/usermanage');
     }
 }

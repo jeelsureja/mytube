@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateFavouritevideoTable extends Migration
 {
@@ -19,13 +19,13 @@ class CreateFavouritevideoTable extends Migration
             $table->unsignedBigInteger('u_id');
             $table->timestamps();
             $table->foreign('id')
-            ->references('id')
-            ->on('sample_data')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('sample_data')
+                ->onDelete('cascade');
             $table->foreign('u_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 

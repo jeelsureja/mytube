@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\category;
+use App\Crud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Crud;
-use App\category;
 use Illuminate\Support\Facades\DB;
 
 class videocontroller extends Controller
@@ -18,12 +18,13 @@ class videocontroller extends Controller
     public function index()
     {
         $data2 = DB::table('sample_data')
-        ->where('u_id', Auth::user()->id)
-        ->select('*')
-        ->get();
+            ->where('u_id', Auth::user()->id)
+            ->select('*')
+            ->get();
         $data = Crud::all();
         $categorys = category::all();
-        return view('videoshow',compact('data','data2','categorys'));
+
+        return view('videoshow', compact('data', 'data2', 'categorys'));
     }
 
     /**
@@ -39,7 +40,6 @@ class videocontroller extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -72,7 +72,6 @@ class videocontroller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -91,6 +90,7 @@ class videocontroller extends Controller
     {
         $data = Crud::findOrFail($id);
         $data->delete();
+
         return redirect('video');
     }
 }

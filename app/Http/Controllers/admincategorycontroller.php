@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\category;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class admincategorycontroller extends Controller
 {
@@ -16,7 +15,8 @@ class admincategorycontroller extends Controller
     public function index()
     {
         $categorys = category::all();
-        return view('admin.category',compact('categorys'));
+
+        return view('admin.category', compact('categorys'));
     }
 
     /**
@@ -32,7 +32,6 @@ class admincategorycontroller extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -40,11 +39,12 @@ class admincategorycontroller extends Controller
         $input = $request->all();
 
         $request->validate([
-            'category_name'=>'required',
-       ]);
+            'category_name' => 'required',
+        ]);
 
-       category::create($input);
-       return redirect()->route('admincategory.index');
+        category::create($input);
+
+        return redirect()->route('admincategory.index');
     }
 
     /**
@@ -66,25 +66,26 @@ class admincategorycontroller extends Controller
      */
     public function edit($id)
     {
-     
+
         $category = category::find($id);
+
         return view('admin.category', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $category = category::find($id);
-        $input=$request->all();
+        $input = $request->all();
         $category->update($input);
+
         return redirect('/admincategory');
- 
+
     }
 
     /**
@@ -96,6 +97,7 @@ class admincategorycontroller extends Controller
     public function destroy($id)
     {
         category::find($id)->delete();
+
         return redirect()->route('admincategory.index');
     }
 }

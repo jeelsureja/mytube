@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\comments;
+use Illuminate\Http\Request;
 
 class commentscontroller extends Controller
 {
@@ -30,17 +30,17 @@ class commentscontroller extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $form_data = array(
+        $form_data = [
             'vid' => $request->vid,
             'u_id' => $request->u_id,
-            'comment'=>$request->comment
-        );
+            'comment' => $request->comment,
+        ];
         comments::Create($form_data);
+
         return back()->withInput();
     }
 
@@ -69,7 +69,6 @@ class commentscontroller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Auth;
 
 class AdminLoginController extends Controller
 {
@@ -33,20 +33,21 @@ class AdminLoginController extends Controller
         return view('auth.admin.login');
     }
 
-    public function login( Request $request )
+    public function login(Request $request)
     {
         // Validate form data
         $this->validate($request, [
-            'email'     => 'required|email',
-            'password'  => 'required|min:6'
+            'email' => 'required|email',
+            'password' => 'required|min:6',
         ]);
         // Attempt to authenticate user
         // If successful, redirect to their intended location
-        if ( Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember) ) {
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
             return redirect('/admindashboard');
         }
+
         // Authentication failed, redirect back to the login form
-        return redirect()->back()->withInput( $request->only('email', 'remember') );
+        return redirect()->back()->withInput($request->only('email', 'remember'));
     }
 
     public function showLogoutForm()
@@ -59,6 +60,7 @@ class AdminLoginController extends Controller
         Auth::guard('admin')->logout();
         $request->session()->flush();
         $request->session()->regenerate();
-        return redirect()->guest(route( 'adminlogin' ));
+
+        return redirect()->guest(route('adminlogin'));
     }
 }

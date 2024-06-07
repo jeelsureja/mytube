@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateSampleDataTable extends Migration
 {
@@ -23,13 +23,13 @@ class CreateSampleDataTable extends Migration
             $table->string('video');
             $table->timestamps();
             $table->foreign('category_id')
-            ->references('id')
-            ->on('category')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('category')
+                ->onDelete('cascade');
             $table->foreign('u_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 

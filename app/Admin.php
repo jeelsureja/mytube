@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -15,7 +14,8 @@ class Admin extends Authenticatable
      *
      * @var array
      */
-    protected $table = 'admin'; 
+    protected $table = 'admin';
+
     protected $fillable = [
         'name', 'email', 'password',
     ];

@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\favourite;
-use App\Crud;
+
 use App\category;
+use App\Crud;
+use App\favourite;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class favouritecontroller extends Controller
 {
@@ -21,11 +21,12 @@ class favouritecontroller extends Controller
         $data = Crud::all();
         $categorys = category::all();
         $favourites = DB::table('favouritevideo')
-        ->join('sample_data','favouritevideo.id', '=' ,'sample_data.id')
-        ->where('favouritevideo.u_id',Auth::user()->id)
-        ->select('*')
-        ->get();
-        return view('favouritevideo', compact('data','categorys','favourites'));
+            ->join('sample_data', 'favouritevideo.id', '=', 'sample_data.id')
+            ->where('favouritevideo.u_id', Auth::user()->id)
+            ->select('*')
+            ->get();
+
+        return view('favouritevideo', compact('data', 'categorys', 'favourites'));
     }
 
     /**
@@ -41,16 +42,16 @@ class favouritecontroller extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $form_data = array(
+        $form_data = [
             'id' => $request->id,
-            'u_id' => $request->u_id
-        );
+            'u_id' => $request->u_id,
+        ];
         favourite::firstOrCreate($form_data);
+
         return back()->withInput();
     }
 
@@ -63,7 +64,6 @@ class favouritecontroller extends Controller
     public function show($id)
     {
 
-      
     }
 
     /**
@@ -80,7 +80,6 @@ class favouritecontroller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -99,6 +98,7 @@ class favouritecontroller extends Controller
     {
         $favourites = favourite::findOrFail($id);
         $favourites->delete();
+
         return redirect('favourites');
     }
 }

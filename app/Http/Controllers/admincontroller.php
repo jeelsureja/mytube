@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use DB;
-use App\User;
 use App\category;
 use App\Crud;
 use App\feedback;
+use App\User;
+use Illuminate\Http\Request;
 
 class admincontroller extends Controller
 {
@@ -22,8 +21,9 @@ class admincontroller extends Controller
         $query1 = category::count();
         $query2 = Crud::count();
         $query3 = feedback::count();
+
         // User::find()->count();
-        return view('admin.dashboard',compact('query','query1','query2','query3'));
+        return view('admin.dashboard', compact('query', 'query1', 'query2', 'query3'));
     }
 
     /**
@@ -39,7 +39,6 @@ class admincontroller extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -66,13 +65,12 @@ class admincontroller extends Controller
      */
     public function edit($id)
     {
-       
+
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -89,6 +87,6 @@ class admincontroller extends Controller
      */
     public function destroy(category $category)
     {
-       
+
     }
 }

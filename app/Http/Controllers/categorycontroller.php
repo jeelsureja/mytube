@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Crud;
-use App\category;
 
 class categorycontroller extends Controller
 {
@@ -16,7 +15,7 @@ class categorycontroller extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -32,7 +31,6 @@ class categorycontroller extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -49,19 +47,16 @@ class categorycontroller extends Controller
     public function show($id)
     {
         $categorys = category::all();
-        $cat=DB::table('category')
-        ->where('id', $id)
-        ->select('category_name')
-
-        ->first();
+        $cat = DB::table('category')
+            ->where('id', $id)
+            ->select('category_name')
+            ->first();
         $data = DB::table('sample_data')
-        ->where('category_id', $id)
-        ->select('*')
+            ->where('category_id', $id)
+            ->select('*')
+            ->get();
 
-        ->get();
-
-
-        return view('catindex',compact('data','categorys','cat'));
+        return view('catindex', compact('data', 'categorys', 'cat'));
     }
 
     /**
@@ -78,7 +73,6 @@ class categorycontroller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

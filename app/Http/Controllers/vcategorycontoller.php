@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Crud;
-use App\category;
 
 class vcategorycontoller extends Controller
 {
@@ -32,7 +31,6 @@ class vcategorycontoller extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -50,11 +48,11 @@ class vcategorycontoller extends Controller
     {
         $categorys = category::all();
         $data = DB::table('sample_data')
-        ->where('category_id', $id)
-        ->select('*')
+            ->where('category_id', $id)
+            ->select('*')
+            ->get();
 
-        ->get();
-        return view('withoutlogin.categorypage',compact('data','categorys'));
+        return view('withoutlogin.categorypage', compact('data', 'categorys'));
     }
 
     /**
@@ -71,7 +69,6 @@ class vcategorycontoller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

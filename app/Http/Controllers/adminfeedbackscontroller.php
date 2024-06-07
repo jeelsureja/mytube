@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\category;
 use App\User;
-use Illuminate\Support\Facades\DB;
-
+use Illuminate\Http\Request;
 
 class adminfeedbackscontroller extends Controller
 {
@@ -18,10 +15,10 @@ class adminfeedbackscontroller extends Controller
     public function index()
     {
         $data4 = User::join('feedback', 'users.id', '=', 'feedback.u_id')
+            ->select('users.name', 'users.email', 'feedback.message', 'feedback.created_at')
+            ->get();
 
-        ->select('users.name', 'users.email','feedback.message','feedback.created_at')
-        ->get();
-        return view('admin.feedback',compact('data4'));
+        return view('admin.feedback', compact('data4'));
     }
 
     /**
@@ -37,7 +34,6 @@ class adminfeedbackscontroller extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -70,7 +66,6 @@ class adminfeedbackscontroller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

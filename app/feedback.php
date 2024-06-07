@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class feedback extends Model
 {
-    protected $table='feedback';
+    protected $table = 'feedback';
+
     protected $fillable = [
-         'u_id','message'
+        'u_id', 'message',
     ];
 }

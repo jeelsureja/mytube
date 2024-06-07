@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\category;
 use App\feedback;
+use Illuminate\Http\Request;
 
 class feedbackcontroller extends Controller
 {
@@ -15,7 +15,7 @@ class feedbackcontroller extends Controller
      */
     public function index()
     {
-       
+
     }
 
     /**
@@ -26,24 +26,25 @@ class feedbackcontroller extends Controller
     public function create()
     {
         $categorys = category::all();
-        return view('feedback',compact('categorys'));
+
+        return view('feedback', compact('categorys'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $form_data = array(
+        $form_data = [
 
             'u_id' => $request->u_id,
-            'message'=>$request->message
-            );
-            feedback::Create($form_data);
-            return back()->withInput();
+            'message' => $request->message,
+        ];
+        feedback::Create($form_data);
+
+        return back()->withInput();
     }
 
     /**
@@ -71,7 +72,6 @@ class feedbackcontroller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

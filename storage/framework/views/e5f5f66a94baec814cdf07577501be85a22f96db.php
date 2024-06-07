@@ -1,1 +1,0 @@
-<?php /**PATH /var/www/html/laravel/Laravel-5.8-Crud-Tutorial-master/resources/views/view1.blade.php ENDPATH**/ ?>

@@ -19,7 +19,7 @@ Route::resource('homepage','homepagecontroller');
 Route::resource('vcategory','vcategorycontoller');
 Route::resource('videoplay','videoplaycontroller');
 
-Auth::routes();
+// Auth::routes();
    
 Route::get('admin/login','Auth\AdminLoginController@showLoginForm');
 Route::post('admin/login','Auth\AdminLoginController@login')->name('adminlogin');
@@ -53,8 +53,12 @@ Route::group(["middleware"=>'auth'],function(){
     Route::resource('playlists','playlistscontroller');
     Route::resource('favourites','favouritecontroller');
 
-    Route::get('/home', 'HomeController@index')->name('home');
+    // Route::get('/home', 'HomeController@index')->name('home');
  
 });
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

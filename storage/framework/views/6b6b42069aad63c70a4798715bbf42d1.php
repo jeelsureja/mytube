@@ -27,11 +27,11 @@
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
-    @include('adminassets.sidebar')
+    <?php echo $__env->make('adminassets.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     
     <div class="main-panel">
       <!-- Navbar -->
-      @include('adminassets.navbar')
+      <?php echo $__env->make('adminassets.navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
       <!-- End Navbar -->
       <!-- <div class="panel-header panel-header-sm">
   
@@ -66,29 +66,34 @@
                     </thead>
                     <tbody>
                     <?php $i = 1; ?>
-                    @forelse($data4 as $row)
+                    <?php $__empty_1 = true; $__currentLoopData = $data4; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                       <tr>
                         <td>
-                        {{$i++}}
+                        <?php echo e($i++); ?>
+
                         </td>
                         <td>
-                          {{ $row->name }}
+                          <?php echo e($row->name); ?>
+
                         </td>
                         <td>
-                          {{ $row->email}}
+                          <?php echo e($row->email); ?>
+
                         </td>
                         <td>
-                            {{$row->message}}
+                            <?php echo e($row->message); ?>
+
                         </td>
                         <td>
-                            {{$row->created_at}}
+                            <?php echo e($row->created_at); ?>
+
                         </td>
                       </tr>
-                      @empty
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <tr>
                           <td class="text-center" colspan="5">No Data Found</td>
                         </tr>
-                      @endforelse
+                      <?php endif; ?>
                     </tbody>
                   </table>
                 </div>
@@ -144,4 +149,4 @@
   <script src="admin_dist/demo/demo.js"></script>
 </body>
 
-</html>
+</html><?php /**PATH /var/www/html/projects/mytube/resources/views/admin/feedback.blade.php ENDPATH**/ ?>

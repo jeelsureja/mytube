@@ -24,14 +24,11 @@
 <body class="">
   <div class="wrapper ">
     
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
-    @include('adminassets.sidebar')
+    <?php echo $__env->make('adminassets.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     
     <div class="main-panel">
       <!-- Navbar -->
-      @include('adminassets.navbar')
+      <?php echo $__env->make('adminassets.navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
       <!-- End Navbar -->
       <!-- <div class="panel-header panel-header-sm">
   
@@ -42,7 +39,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Feedbacks</h4>
+                <h4 class="card-title">Active Users</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -58,37 +55,39 @@
                         Email
                       </th>
                       <th>
-                        Message
-                      </th>
-                      <th>
-                       Time
+                        Delete
                       </th>
                     </thead>
                     <tbody>
                     <?php $i = 1; ?>
-                    @forelse($data4 as $row)
+                    <?php $__empty_1 = true; $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                       <tr>
                         <td>
-                        {{$i++}}
+                        <?php echo e($i++); ?>
+
                         </td>
                         <td>
-                          {{ $row->name }}
+                          <?php echo e($user->name); ?>
+
                         </td>
                         <td>
-                          {{ $row->email}}
+                          <?php echo e($user->email); ?>
+
                         </td>
                         <td>
-                            {{$row->message}}
-                        </td>
-                        <td>
-                            {{$row->created_at}}
+                        <form action="<?php echo e(URL::route('usermanage.destroy', $user->id)); ?>" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+								        <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>"> 
+                        
+                        <button  id="remove" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></button>
+                       </form>
                         </td>
                       </tr>
-                      @empty
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <tr>
-                          <td class="text-center" colspan="5">No Data Found</td>
+                          <td class="text-center" colspan="4">No Data Found</td>
                         </tr>
-                      @endforelse
+                      <?php endif; ?>
                     </tbody>
                   </table>
                 </div>
@@ -144,4 +143,4 @@
   <script src="admin_dist/demo/demo.js"></script>
 </body>
 
-</html>
+</html><?php /**PATH /var/www/html/projects/mytube/resources/views/admin/usermanage.blade.php ENDPATH**/ ?>

@@ -60,7 +60,7 @@
                     </thead>
                     <tbody>
                     <?php $i = 1; ?>
-                    @foreach($users as $user)
+                    @forelse($users as $user)
                       <tr>
                         <td>
                         {{$i++}}
@@ -80,7 +80,11 @@
                        </form>
                         </td>
                       </tr>
-                      @endforeach
+                      @empty
+                        <tr>
+                          <td class="text-center" colspan="4">No Data Found</td>
+                        </tr>
+                      @endforelse
                     </tbody>
                   </table>
                 </div>

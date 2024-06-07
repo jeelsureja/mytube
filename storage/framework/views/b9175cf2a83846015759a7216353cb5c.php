@@ -24,11 +24,11 @@
 <body class="">
   <div class="wrapper ">
     
-    @include('adminassets.sidebar')
+    <?php echo $__env->make('adminassets.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
    
     <div class="main-panel">
       <!-- Navbar -->
-      @include('adminassets.navbar')
+      <?php echo $__env->make('adminassets.navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
       <!-- End Navbar -->
       <!-- <div class="panel-header panel-header-sm">
   
@@ -63,33 +63,35 @@
                     </thead>
                     <tbody>
                     <?php $i = 1; ?>
-                    @forelse($categorys as $category)
+                    <?php $__empty_1 = true; $__currentLoopData = $categorys; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                       <tr>
-                        <td>{{$i++}}
+                        <td><?php echo e($i++); ?>
+
                         </td>
                         <td>
-                        {{$category->category_name}}
+                        <?php echo e($category->category_name); ?>
+
                         </td>
                         <td>
                       
-                        <a href="{{ URL::route('admincategory.edit',$category->id) }}" class="btn btn-info btn-circle edit_model" data-toggle="modal" data-target="#edit-model">
+                        <a href="<?php echo e(URL::route('admincategory.edit',$category->id)); ?>" class="btn btn-info btn-circle edit_model" data-toggle="modal" data-target="#edit-model">
                         <i class="fas fa-edit"></i>
                         </a>
                         </td>
                         <td>
-                        <form action="{{ URL::route('admincategory.destroy', $category->id) }}" method="POST">
+                        <form action="<?php echo e(URL::route('admincategory.destroy', $category->id)); ?>" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
-								        <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
+								        <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>"> 
                         
                         <button  id="remove" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></button>
                        </form>
                         </td>
                       </tr>
-                      @empty
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <tr>
                           <td class="text-center" colspan="4">No Data Found</td>
                         </tr>
-                      @endforelse
+                      <?php endif; ?>
                     </tbody>
                   </table>
                 </div>
@@ -99,8 +101,8 @@
          
         </div>
       </div>
-      <form id="insert_form" name="form1" action="{{route('admincategory.store')}}" method="post">
-      @csrf
+      <form id="insert_form" name="form1" action="<?php echo e(route('admincategory.store')); ?>" method="post">
+      <?php echo csrf_field(); ?>
       <div id="modalCenter" class="modal fade" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -127,9 +129,9 @@
     </form>
  
 
-    <form action="{{ URL::route('admincategory.update', $category->id) }}" name="form2" method="post">
-    @csrf
-    @method('PATCH')
+    <form action="<?php echo e(URL::route('admincategory.update', $category->id)); ?>" name="form2" method="post">
+    <?php echo csrf_field(); ?>
+    <?php echo method_field('PATCH'); ?>
 
       <div id="edit-model" class="modal fade" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -142,7 +144,7 @@
                     <label>Category Name:</label>
 
                   
-                    <input type="text" class="form-control" id="category_name" name="category_name" value="{{$category->category_name }}"><br>
+                    <input type="text" class="form-control" id="category_name" name="category_name" value="<?php echo e($category->category_name); ?>"><br>
                     
                 </div>
                 <div class="modal-footer">
@@ -210,4 +212,4 @@
   <script src="admin_dist/demo/demo.js"></script>
 </body>
 
-</html>
+</html><?php /**PATH /var/www/html/projects/mytube/resources/views/admin/category.blade.php ENDPATH**/ ?>

@@ -6,13 +6,6 @@
       0 => 'BeyondCode\\DumpServer\\DumpServerServiceProvider',
     ),
   ),
-  'fideloper/proxy' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-    ),
-  ),
   'intervention/image' => 
   array (
     'providers' => 
@@ -31,6 +24,13 @@
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
     ),
   ),
+  'laravel/ui' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Ui\\UiServiceProvider',
+    ),
+  ),
   'nesbot/carbon' => 
   array (
     'providers' => 
@@ -43,6 +43,13 @@
     'providers' => 
     array (
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    ),
+  ),
+  'nunomaduro/termwind' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Termwind\\Laravel\\TermwindServiceProvider',
     ),
   ),
 );
